@@ -33,6 +33,18 @@ Implementaciones completas de laboratorios y proyectos fundamentales del icónic
   - Heurística de selección por Valores Restantes Mínimos (*MRV*).
   - Generación de configuraciones válidas consistentes para puzles de palabras cruzadas y asignación de recursos.
 
+### 4. Búsqueda en Espacio de Estados y Juegos Adversarios (`src/search_and_games.py`)
+- **Fronteras de Búsqueda:** DFS (*Depth-First Search* / LIFO), BFS (*Breadth-First Search* / FIFO) y Búsqueda A* con cola de prioridad guiada por heurísticas admisibles $f(n) = g(n) + h(n)$.
+- **Minimax con Poda Alfa-Beta para Tres en Línea (*Tic-Tac-Toe AI*):**
+  - Motor de búsqueda óptimo de suma cero que garantiza victoria o empate perfecto explorando el árbol de juego con cortes por poda de ramas redundantes $\alpha \ge \beta$.
+
+### 5. Aprendizaje por Refuerzo y Aprendizaje Supervisado (`src/learning_and_rl.py`)
+- **Agente de Q-Learning para Nim:**
+  - Aprendizaje de función de valor de acción $Q(s, a)$ mediante la ecuación de actualización de Bellman con tasa de aprendizaje $\alpha$ y factor de descuento $\gamma$.
+  - Selección de acciones mediante estrategia de exploración $\epsilon$-greedy.
+- **Clasificador k-Vecinos Más Cercanos (*k-NN Classifier*):**
+  - Predicción de propensión de compra para visitantes web en CS50 Shopping mediante distancia euclidiana y votación por mayoría, reportando métricas de Sensibilidad (*TPR*) y Especificidad (*TNR*).
+
 ---
 
 ## 🧪 Pruebas Automatizadas
@@ -41,13 +53,27 @@ Implementaciones completas de laboratorios y proyectos fundamentales del icónic
 python -m unittest discover tests -v
 ```
 
-### Resultados de la Suite
+### Resultados de la Suite (13/13 Passed ✅)
 ```text
-test_minesweeper_ai_inference (test_knowledge_and_logic.TestKnowledgeAndLogic.test_minesweeper_ai_inference) ... ok
-test_propositional_logic_model_check (test_knowledge_and_logic.TestKnowledgeAndLogic.test_propositional_logic_model_check) ... ok
-test_csp_crossword_solve_with_ac3 (test_optimization_csp.TestOptimizationCSP.test_csp_crossword_solve_with_ac3) ... ok
-test_csp_node_consistency (test_optimization_csp.TestOptimizationCSP.test_csp_node_consistency) ... ok
-test_heredity_bayesian_probability (test_uncertainty_and_markov.TestUncertaintyAndMarkov.test_heredity_bayesian_probability) ... ok
+test_astar_frontier ... ok
+test_dfs_and_bfs_frontiers ... ok
+test_knn_classifier_shopping ... ok
+test_nim_q_learning_update ... ok
+test_tictactoe_minimax_defense ... ok
+test_tictactoe_minimax_optimal_blocking ... ok
+test_minesweeper_ai_inference ... ok
+test_propositional_logic_model_check ... ok
+test_csp_crossword_solve_with_ac3 ... ok
+test_csp_node_consistency ... ok
+test_heredity_bayesian_probability ... ok
+test_pagerank_markov_iteration ... ok
+test_transition_model_distribution ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.003s
+
+OK
+```
 test_pagerank_markov_iteration (test_uncertainty_and_markov.TestUncertaintyAndMarkov.test_pagerank_markov_iteration) ... ok
 test_transition_model_distribution (test_uncertainty_and_markov.TestUncertaintyAndMarkov.test_transition_model_distribution) ... ok
 
