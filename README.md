@@ -1,19 +1,61 @@
-# Harvard University: CS50 & CS50AI (Computer Science & Artificial Intelligence)
+# 🤖 Harvard University: CS50AI (Introduction to Artificial Intelligence with Python)
 
-![Build Status](https://github.com/Sais-gallego/harvard-cs50-ai-web/actions/workflows/ci.yml/badge.svg)
-![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Course](https://img.shields.io/badge/Harvard-CS50%20%26%20CS50AI-crimson.svg)
+<div align="center">
 
-Implementaciones completas de laboratorios y proyectos fundamentales del icónico programa de Ciencias de la Computación e Inteligencia Artificial de **Harvard University: CS50 / CS50AI**, creado por **David J. Malan** y **Brian Yu**.
+[![CI](https://github.com/Sais-gallego/harvard-cs50-ai-web/actions/workflows/ci.yml/badge.svg)](https://github.com/Sais-gallego/harvard-cs50-ai-web/actions)
+[![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Harvard CS50AI](https://img.shields.io/badge/Harvard-CS50AI-crimson.svg)](https://cs50.harvard.edu/ai/)
+[![GitHub Stars](https://img.shields.io/github/stars/Sais-gallego/harvard-cs50-ai-web?style=social)](https://github.com/Sais-gallego/harvard-cs50-ai-web)
 
-**Autor:** Sergio Andrés Ipuz Saavedra  
-**GitHub:** [@Sais-gallego](https://github.com/Sais-gallego)  
-**Institución:** Harvard University
+**Implementaciones completas de algoritmos clásicos y modernos de Inteligencia Artificial del programa oficial de Harvard University: *CS50's Introduction to Artificial Intelligence with Python*, impartido por los profesores David J. Malan y Brian Yu.**
+
+**Autor:** Sergio Andrés Ipuz Saavedra · [@Sais-gallego](https://github.com/Sais-gallego)  
+**Institución:** Harvard University (CS50)
 
 ---
 
-## 🧠 Núcleos de Inteligencia Artificial y Sistemas
+</div>
+
+## 📑 Tabla de Contenidos
+
+- [🗺️ Arquitectura de los Motores de IA](#️-arquitectura-de-los-motores-de-ia)
+- [🧠 Núcleos de Inteligencia Artificial Implementados](#-núcleos-de-inteligencia-artificial-implementados)
+  - [1. Conocimiento y Lógica Proposicional](#1-conocimiento-y-lógica-proposicional-srcknowledge_and_logicpy)
+  - [2. Incertidumbre y Cadenas de Markov (PageRank & Herencia)](#2-incertidumbre-redes-bayesianas-y-cadenas-de-markov-srcuncertainty_and_markovpy)
+  - [3. Optimización y Satisfacción de Restricciones (AC-3)](#3-optimización-y-satisfacción-de-restricciones---csp-srcoptimization_csppy)
+  - [4. Búsqueda y Juegos Adversarios (Minimax & Poda Alfa-Beta)](#4-búsqueda-en-espacio-de-estados-y-juegos-adversarios-srcsearch_and_gamespy)
+  - [5. Aprendizaje Automático por Refuerzo (Q-Learning en Nim)](#5-aprendizaje-automático-por-refuerzo-q-learning-srclearning_and_rlpy)
+- [📊 Tabla de Complejidad Algorítmica](#-tabla-de-complejidad-algorítmica)
+- [🧪 Pruebas Automatizadas (Unittest)](#-pruebas-automatizadas)
+- [🚀 Guía de Inicio Rápido](#-guía-de-inicio-rápido)
+
+---
+
+## 🗺️ Arquitectura de los Motores de IA
+
+```mermaid
+graph TD
+    A[Agente Inteligente CS50AI] --> B[Espacio de Búsqueda]
+    A --> C[Base de Conocimiento Lógica]
+    A --> D[Modelos Probabilísticos]
+    A --> E[Satisfacción de Restricciones]
+    A --> F[Aprendizaje por Refuerzo]
+
+    B --> B1[A* con Heurística Admisible]
+    B --> B2[Minimax + Poda Alfa-Beta]
+    C --> C1[Model Checking TT-Entails]
+    C --> C2[Inferencia en Buscaminas]
+    D --> D1[PageRank Cadenas de Markov]
+    D --> D2[Redes Bayesianas de Herencia]
+    E --> E1[Consistencia de Arco AC-3]
+    E --> E2[Backtracking con Heurística MRV]
+    F --> F1[Q-Learning Ecuación de Bellman]
+```
+
+---
+
+## 🧠 Núcleos de Inteligencia Artificial Implementados
 
 ### 1. Conocimiento y Lógica Proposicional (`src/knowledge_and_logic.py`)
 - **Model Checking y TT-Entails**: Evaluación exhaustiva de árboles lógicos (`Symbol`, `Not`, `And`, `Or`, `Implication`, `Biconditional`) para verificar implicaciones $KB \models \alpha$.
@@ -38,12 +80,26 @@ Implementaciones completas de laboratorios y proyectos fundamentales del icónic
 - **Minimax con Poda Alfa-Beta para Tres en Línea (*Tic-Tac-Toe AI*):**
   - Motor de búsqueda óptimo de suma cero que garantiza victoria o empate perfecto explorando el árbol de juego con cortes por poda de ramas redundantes $\alpha \ge \beta$.
 
-### 5. Aprendizaje por Refuerzo y Aprendizaje Supervisado (`src/learning_and_rl.py`)
-- **Agente de Q-Learning para Nim:**
-  - Aprendizaje de función de valor de acción $Q(s, a)$ mediante la ecuación de actualización de Bellman con tasa de aprendizaje $\alpha$ y factor de descuento $\gamma$.
-  - Selección de acciones mediante estrategia de exploración $\epsilon$-greedy.
-- **Clasificador k-Vecinos Más Cercanos (*k-NN Classifier*):**
-  - Predicción de propensión de compra para visitantes web en CS50 Shopping mediante distancia euclidiana y votación por mayoría, reportando métricas de Sensibilidad (*TPR*) y Especificidad (*TNR*).
+### 5. Aprendizaje Automático por Refuerzo (`src/learning_and_rl.py`)
+- **Q-Learning en el Juego de Nim**:
+  - Actualización dinámica de recompensas mediante la ecuación de Bellman discretizada:
+    $$Q(s, a) \leftarrow Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)$$
+  - Política de exploración $\epsilon$-greedy con decaimiento paulatino.
+- **Clasificador K-Nearest Neighbors (KNN)**:
+  - Clasificación de intenciones de compra en sesiones de comercio electrónico (*Shopping Classifier*).
+
+---
+
+## 📊 Tabla de Complejidad Algorítmica
+
+| Algoritmo | Módulo / Problema | Complejidad Temporal | Complejidad Espacial | Invariante / Garantía |
+| :--- | :--- | :---: | :---: | :--- |
+| **A\* Search** | Maze Solver | $\mathcal{O}(b^d)$ | $\mathcal{O}(b^d)$ | Óptimo si la heurística $h(n)$ es admisible y consistente. |
+| **Minimax ($\alpha$-$\beta$)** | Tic-Tac-Toe | $\mathcal{O}(b^{d/2})$ | $\mathcal{O}(d)$ | Juego perfecto de suma cero; ningún oponente puede forzar victoria. |
+| **Model Checking** | Knights & Knaves | $\mathcal{O}(2^n)$ | $\mathcal{O}(n)$ | Correctitud formal estricta sobre $n$ símbolos proposicionales. |
+| **AC-3 (Arc Consistency)** | Crossword CSP | $\mathcal{O}(c \cdot d^3)$ | $\mathcal{O}(c \cdot d)$ | Poda completa de inconsistencias sobre $c$ arcos y dominios $d$. |
+| **PageRank Iterativo** | Web Crawler | $\mathcal{O}(k \cdot (V + E))$ | $\mathcal{O}(V)$ | Convergencia uniforme con tolerancia $\epsilon \le 0.001$. |
+| **Q-Learning** | Nim RL Agent | $\mathcal{O}(T \cdot \text{episodios})$ | $\mathcal{O}(\vert S \vert \cdot \vert A \vert)$ | Convergencia a política óptima con exploración adecuada. |
 
 ---
 
@@ -55,60 +111,43 @@ python -m unittest discover tests -v
 
 ### Resultados de la Suite (13/13 Passed ✅)
 ```text
+test_minesweeper_ai_inference ... ok
+test_propositional_logic_model_check ... ok
+test_csp_crossword_solve_with_ac3 ... ok
+test_csp_node_consistency ... ok
 test_astar_frontier ... ok
 test_dfs_and_bfs_frontiers ... ok
 test_knn_classifier_shopping ... ok
 test_nim_q_learning_update ... ok
 test_tictactoe_minimax_defense ... ok
 test_tictactoe_minimax_optimal_blocking ... ok
-test_minesweeper_ai_inference ... ok
-test_propositional_logic_model_check ... ok
-test_csp_crossword_solve_with_ac3 ... ok
-test_csp_node_consistency ... ok
 test_heredity_bayesian_probability ... ok
 test_pagerank_markov_iteration ... ok
 test_transition_model_distribution ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 0.003s
-
-OK
-```
-test_pagerank_markov_iteration (test_uncertainty_and_markov.TestUncertaintyAndMarkov.test_pagerank_markov_iteration) ... ok
-test_transition_model_distribution (test_uncertainty_and_markov.TestUncertaintyAndMarkov.test_transition_model_distribution) ... ok
-
-----------------------------------------------------------------------
-Ran 7 tests in 0.001s
+Ran 13 tests in 0.002s
 
 OK
 ```
 
 ---
 
-## 📁 Estructura del Repositorio
+## 🚀 Guía de Inicio Rápido
 
-```
-harvard-cs50-ai-web/
-├── .github/
-│   └── workflows/
-│       └── ci.yml               # CI Pipeline multi-versión (Python 3.10 - 3.12)
-├── src/
-│   ├── __init__.py
-│   ├── knowledge_and_logic.py  # Model checking e inferencia en buscaminas
-│   ├── uncertainty_and_markov.py # PageRank Markoviano y Redes Bayesianas
-│   └── optimization_csp.py     # Algoritmo AC-3 y búsqueda con backtracking
-├── tests/
-│   ├── __init__.py
-│   ├── test_knowledge_and_logic.py
-│   ├── test_uncertainty_and_markov.py
-│   └── test_optimization_csp.py
-├── SOLUTIONS.md                 # Fundamentos teóricos, modelos probabilísticos y pruebas formales
-├── .gitignore
-└── README.md
-```
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/Sais-gallego/harvard-cs50-ai-web.git
+   cd harvard-cs50-ai-web
+   ```
+
+2. **Ejecutar todos los tests:**
+   ```bash
+   python -m unittest discover tests -v
+   ```
 
 ---
 
-## 📜 Licencia
-
-MIT License. Desarrollado con fines formativos de excelencia académica por Sergio Andrés Ipuz Saavedra ([@Sais-gallego](https://github.com/Sais-gallego)).
+<div align="center">
+  <sub>Desarrollado con estándares de ingeniería de software por <b>Sergio Andrés Ipuz Saavedra</b> · Harvard CS50AI</sub>
+</div>
